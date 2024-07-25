@@ -1,0 +1,9 @@
+---
+- name: Simple playbook
+  hosts: nginx-app
+  become: true
+  roles:
+    - role: ../roles/web-app
+      tags:
+        - web-app
+      when: (web_app_enabled is defined) and (web_app_enabled | bool)
